@@ -1,0 +1,3095 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="High-performance semantic memory system with Git-like version control for AI agents">
+      
+      
+      
+        <link rel="canonical" href="https://zhangfengcdt.github.io/memoir/cli/">
+      
+      
+        <link rel="prev" href="../theory/related-work/">
+      
+      
+        <link rel="next" href="../cloud/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../_static/memoir.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>CLI - Memoir</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../_static/custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#cli-reference" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Memoir" class="md-header__button md-logo" aria-label="Memoir" data-md-component="logo">
+      
+  <img src="../_static/memoir.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Memoir
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              CLI
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/zhangfengcdt/memoir" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zhangfengcdt/memoir
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../quickstart/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../architecture/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  User Guide
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../theory/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Theory
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  CLI
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../cloud/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Cloud Sync
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../watch/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Watch & Search
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../ui/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  UI
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../claude_code/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Claude Code
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../codex/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Codex
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../hermes/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Hermes
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../openclaw/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  OpenClaw
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../mcp/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  MCP Server
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../api/memoir/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  API
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../examples/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Examples
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Memoir" class="md-nav__button md-logo" aria-label="Memoir" data-md-component="logo">
+      
+  <img src="../_static/memoir.png" alt="logo">
+
+    </a>
+    Memoir
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/zhangfengcdt/memoir" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zhangfengcdt/memoir
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basic_usage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Basic Usage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User Guide
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    User Guide
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../theory/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Theory
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Theory
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../theory/classifier/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Classifier
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../theory/search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Search
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../theory/memento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Memento
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../theory/conflict-merge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conflict & Merge
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../theory/related-work/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Related Work
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#environment-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Environment variables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#global-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Global flags
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#per-call-branch-routing-multi-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Per-call branch routing (multi-agent)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#search-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Search commands
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Search commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#memoir-recall-semantic-search-in-engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        memoir recall — semantic search (in-engine)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="memoir recall — semantic search (in-engine)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#picking-the-llm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Picking the LLM
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memoir-remember-conflict-resolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        memoir remember — conflict resolution
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memoir-get-direct-lookup-by-taxonomy-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        memoir get — direct lookup by taxonomy path
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memoir-summarize-taxonomy-surveys" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        memoir summarize — taxonomy surveys
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-to-reach-for-which-cli-command" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When to reach for which CLI command
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cloud-sync-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cloud sync commands
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cloud sync commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#first-push-from-your-laptop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        First push from your laptop
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pick-it-up-on-your-desktop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pick it up on your desktop
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linking-without-typing-the-address" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Linking without typing the address
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-daily-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The daily loop
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-the-cloud-is-ahead" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When the cloud is ahead
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#more-than-one-branch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        More than one branch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scripting-and-agents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scripting and agents
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unlinking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unlinking
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#other-command-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Other command groups
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cloud/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cloud Sync
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../watch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Watch & Search
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ui/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../claude_code/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../codex/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Codex
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hermes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hermes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../openclaw/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenClaw
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mcp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MCP Server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_14" id="__nav_14_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_14">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/memoir/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Memoir
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/classifier/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Classifier
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/memento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Memento
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Search
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/store/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Store
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/taxonomy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Taxonomy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_15" id="__nav_15_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examples
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_15">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Examples
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/context_branching/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Context Branching
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/memory_debugging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Memory Debugging
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/production_debugging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Production Debugging
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/reproducible_testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reproducible Testing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#environment-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Environment variables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#global-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Global flags
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#per-call-branch-routing-multi-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Per-call branch routing (multi-agent)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#search-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Search commands
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Search commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#memoir-recall-semantic-search-in-engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        memoir recall — semantic search (in-engine)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="memoir recall — semantic search (in-engine)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#picking-the-llm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Picking the LLM
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memoir-remember-conflict-resolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        memoir remember — conflict resolution
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memoir-get-direct-lookup-by-taxonomy-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        memoir get — direct lookup by taxonomy path
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memoir-summarize-taxonomy-surveys" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        memoir summarize — taxonomy surveys
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-to-reach-for-which-cli-command" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When to reach for which CLI command
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cloud-sync-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cloud sync commands
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cloud sync commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#first-push-from-your-laptop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        First push from your laptop
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pick-it-up-on-your-desktop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pick it up on your desktop
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linking-without-typing-the-address" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Linking without typing the address
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-daily-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The daily loop
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-the-cloud-is-ahead" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When the cloud is ahead
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#more-than-one-branch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        More than one branch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scripting-and-agents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scripting and agents
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unlinking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unlinking
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#other-command-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Other command groups
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/zhangfengcdt/memoir/edit/main/docs/cli.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="cli-reference">CLI Reference<a class="headerlink" href="#cli-reference" title="Permanent link">&para;</a></h1>
+<p>The <code>memoir</code> command is the primary shell interface to a memory store. It exposes every retrieval and mutation pipeline the Python SDK supports, plus taxonomy-inspection primitives designed for agentic callers.</p>
+<p>This page documents the search-adjacent commands — <code>recall</code>, <code>get</code>, and <code>summarize</code> — and the cloud sync commands in depth. For mutation (<code>remember</code>, <code>forget</code>), versioning (<code>branch</code>, <code>checkout</code>, <code>merge</code>, <code>time-travel</code>, <code>branch-match</code>), and crypto (<code>proof</code>, <code>verify</code>, <code>blame</code>) commands, use <code>memoir &lt;command&gt; --help</code> or see the API reference.</p>
+<h2 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h2>
+<p>Set <code>MEMOIR_STORE</code> once so you can skip <code>-s &lt;path&gt;</code> on every call. Most usage assumes this is exported:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">MEMOIR_STORE</span><span class="o">=</span>/path/to/store
+</span></code></pre></div>
+<p>Add <code>--json</code> at the group level for machine-readable output (recommended when scripting or piping into <code>jq</code>). <code>MEMOIR_JSON=1</code> in the environment has the same effect globally.</p>
+<h3 id="environment-variables">Environment variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MEMOIR_STORE</code></td>
+<td>Default store path. Avoids <code>-s &lt;path&gt;</code> on every call.</td>
+</tr>
+<tr>
+<td><code>MEMOIR_JSON</code></td>
+<td>If <code>1</code>, all commands output JSON (same as passing <code>--json</code>).</td>
+</tr>
+<tr>
+<td><code>MEMOIR_QUIET</code></td>
+<td>If <code>1</code>, suppresses non-essential output.</td>
+</tr>
+<tr>
+<td><code>MEMOIR_BRANCH</code></td>
+<td>Default target branch for <code>remember</code>, <code>recall</code>, <code>get</code>, <code>forget</code>, and <code>search</code> — per-call routing without changing the store's checked-out branch. Each command also accepts an explicit <code>--branch &lt;name&gt;</code> flag which overrides this variable. See <a href="#per-call-branch-routing-multi-agent">Per-call branch routing</a> below.</td>
+</tr>
+<tr>
+<td><code>MEMOIR_MERGE_POLICY</code></td>
+<td>Global conflict-resolution strategy for <code>remember</code> when a key already exists, overriding the per-type default but below an explicit <code>--merge-policy</code>. <code>=replace</code> restores the old overwrite-everywhere behaviour. See <a href="#memoir-remember-conflict-resolution">Conflict resolution</a>.</td>
+</tr>
+<tr>
+<td><code>MEMOIR_FACET_MAX_ENTRIES</code></td>
+<td>Cap on facet entries per key for append-style writes (oldest pruned). Default <code>50</code>; <code>0</code>/<code>none</code> disables capping.</td>
+</tr>
+<tr>
+<td><code>MEMOIR_RECALL_MERGE</code></td>
+<td>If <code>llm</code>, enables merge-on-read: a multi-entry key's content is LLM-consolidated at read time. Off by default (the deterministic projection is used).</td>
+</tr>
+<tr>
+<td><code>MEMOIR_API_KEY</code></td>
+<td>memoir-cloud API key; overrides the one saved by <code>memoir login</code>. Unlocks the cloud sync commands (<code>remote</code>, <code>push</code>, <code>pull</code>, <code>fetch</code>). Unset = COMMUNITY tier, no behaviour change. Never written to disk. See <a href="../cloud/">Cloud Sync</a>.</td>
+</tr>
+<tr>
+<td><code>MEMOIR_CLOUD_URL</code></td>
+<td>memoir-cloud gateway URL for <code>remote add</code> / <code>push --create</code> when <code>--url</code> is not passed. Default: the production gateway.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="global-flags">Global flags<a class="headerlink" href="#global-flags" title="Permanent link">&para;</a></h3>
+<p>Flags accepted before the subcommand, on the <code>memoir</code> group itself:</p>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-s, --store &lt;path&gt;</code></td>
+<td>Override the store path (takes precedence over <code>MEMOIR_STORE</code>).</td>
+</tr>
+<tr>
+<td><code>--json</code></td>
+<td>Machine-readable output for every subcommand.</td>
+</tr>
+<tr>
+<td><code>-q, --quiet</code></td>
+<td>Suppress non-essential output.</td>
+</tr>
+<tr>
+<td><code>-v, --verbose</code></td>
+<td>Enable verbose logging.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="per-call-branch-routing-multi-agent">Per-call branch routing (multi-agent)<a class="headerlink" href="#per-call-branch-routing-multi-agent" title="Permanent link">&para;</a></h3>
+<p><code>remember</code>, <code>recall</code>, <code>get</code>, <code>forget</code>, and <code>search</code> accept <code>--branch &lt;name&gt;</code> (env: <code>MEMOIR_BRANCH</code>). When set, the call operates against that branch and the store's checked-out branch is restored on exit — no <code>memoir checkout</code> round-trip, no race window on shared deployments.</p>
+<p><strong>Set <code>MEMOIR_BRANCH</code> once at the runtime boundary</strong> (LangGraph node, MCP client, agent shell). Each agent process injects its own identity once instead of threading a flag through every call site:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># In agent A's process</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">MEMOIR_BRANCH</span><span class="o">=</span>agents/reviewer
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>memoir<span class="w"> </span>remember<span class="w"> </span><span class="s2">"found N+1 query in /users migration"</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1"># In agent B's process</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="nb">export</span><span class="w"> </span><span class="nv">MEMOIR_BRANCH</span><span class="o">=</span>agents/builder
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>memoir<span class="w"> </span>remember<span class="w"> </span><span class="s2">"shipped pagination on /users"</span>
+</span></code></pre></div>
+<p><strong>Or pass <code>--branch</code> per call.</strong> Explicit flag wins over the env var:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>memoir<span class="w"> </span>remember<span class="w"> </span><span class="s2">"API contract change"</span><span class="w"> </span>--branch<span class="o">=</span>agents/reviewer
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>memoir<span class="w"> </span>recall<span class="w">   </span><span class="s2">"N+1"</span><span class="w">                 </span>--branch<span class="o">=</span>agents/reviewer
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>memoir<span class="w"> </span>get<span class="w">      </span>lessons.builder.api<span class="w">   </span>--branch<span class="o">=</span>agents/builder
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>memoir<span class="w"> </span>forget<span class="w">   </span>stale.note<span class="w">            </span>--branch<span class="o">=</span>agents/builder<span class="w"> </span>--force
+</span></code></pre></div>
+<p><strong>Reads are isolated.</strong> Other branches and <code>main</code> don't see an agent's working memory until it's merged:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>$<span class="w"> </span>memoir<span class="w"> </span>get<span class="w"> </span>lessons.reviewer.sql<span class="w"> </span>--branch<span class="o">=</span>agents/builder
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>✗<span class="w"> </span>default:lessons.reviewer.sql<span class="w"> </span><span class="o">(</span>not<span class="w"> </span>found<span class="o">)</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>$<span class="w"> </span>memoir<span class="w"> </span>get<span class="w"> </span>lessons.reviewer.sql<span class="w"> </span>--branch<span class="o">=</span>typo-here
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>✗<span class="w"> </span>Failed<span class="w"> </span>to<span class="w"> </span>get:<span class="w"> </span>Branch<span class="w"> </span><span class="s1">'typo-here'</span><span class="w"> </span>does<span class="w"> </span>not<span class="w"> </span>exist.
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">  </span>Create<span class="w"> </span>it<span class="w"> </span>explicitly<span class="w"> </span>with<span class="w"> </span><span class="sb">`</span>memoir<span class="w"> </span>branch<span class="w"> </span>typo-here<span class="sb">`</span>,<span class="w"> </span>or<span class="w"> </span>use<span class="w"> </span>a<span class="w"> </span>write
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">  </span><span class="nb">command</span><span class="w"> </span><span class="o">(</span>e.g.<span class="w"> </span><span class="sb">`</span>memoir<span class="w"> </span>remember<span class="w"> </span>--branch<span class="o">=</span>typo-here<span class="w"> </span>...<span class="sb">`</span><span class="o">)</span><span class="w"> </span>to<span class="w"> </span>bootstrap<span class="w"> </span>it.
+</span></code></pre></div>
+<p>That last error matters — read commands refuse to silently return empty on a misspelled branch, so typos surface immediately instead of looking like "no results".</p>
+<p><strong>Auto-create on first write.</strong> No separate <code>memoir branch &lt;name&gt;</code> is needed for a new agent:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>memoir<span class="w"> </span>remember<span class="w"> </span><span class="s2">"first note"</span><span class="w"> </span>--branch<span class="o">=</span>agents/new-bot<span class="w">   </span><span class="c1"># branch is bootstrapped</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>memoir<span class="w"> </span>branch<span class="w">                                          </span><span class="c1"># → main, agents/new-bot</span>
+</span></code></pre></div>
+<p><strong>Cross-agent synthesis</strong> stays explicit — promote findings to the shared trunk with <code>memoir merge</code>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>memoir<span class="w"> </span>merge<span class="w"> </span>agents/reviewer<span class="w"> </span>--into<span class="w"> </span>main
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>memoir<span class="w"> </span>recall<span class="w"> </span><span class="s2">"N+1"</span><span class="w">   </span><span class="c1"># now visible on main</span>
+</span></code></pre></div>
+<p>After every <code>--branch</code> call the store's checked-out branch is unchanged — routing is per-call, not a checkout.</p>
+<p><strong>Concurrency note.</strong> Routing is per-process. Don't run multiple in-process writers concurrently against the same store on different branches. Separate CLI invocations are fine — they rely on the same prollytree file locking as today.</p>
+<h2 id="search-commands">Search commands<a class="headerlink" href="#search-commands" title="Permanent link">&para;</a></h2>
+<p>The three pipelines described in <a href="../theory/search/">Search Theory</a> are all reachable here. Pick the one that matches how narrow or open-ended your query is.</p>
+<h3 id="memoir-recall-semantic-search-in-engine"><code>memoir recall</code> — semantic search (in-engine)<a class="headerlink" href="#memoir-recall-semantic-search-in-engine" title="Permanent link">&para;</a></h3>
+<p>Primary search entry point. Accepts a natural-language query and returns ranked <code>IntelligentSearchResult</code> memories. Mode is selected per call via <code>--mode</code>.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Single-stage (default) — one LLM call, 500-800ms typical</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>memoir<span class="w"> </span>recall<span class="w"> </span><span class="s2">"what's my testing setup?"</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># Tiered drill-down — 2-3 LLM calls, narrower prompts, ~1-2s typical</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>memoir<span class="w"> </span>recall<span class="w"> </span><span class="s2">"what's my testing setup?"</span><span class="w"> </span>--mode<span class="w"> </span>tiered
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="c1"># Scope to a namespace and cap the result count</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>memoir<span class="w"> </span>recall<span class="w"> </span><span class="s2">"meeting notes"</span><span class="w"> </span>-n<span class="w"> </span>calendar<span class="w"> </span>-l<span class="w"> </span><span class="m">5</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="c1"># Drop results below a relevance threshold (0.0-1.0)</span>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>memoir<span class="w"> </span>recall<span class="w"> </span><span class="s2">"programming languages"</span><span class="w"> </span>--threshold<span class="w"> </span><span class="m">0</span>.5
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="c1"># Machine-readable — best shape for agents / scripts / benchmarks</span>
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>memoir<span class="w"> </span>--json<span class="w"> </span>recall<span class="w"> </span><span class="s2">"testing setup"</span><span class="w"> </span>--mode<span class="w"> </span>tiered
+</span></code></pre></div>
+<p>The <code>--json</code> form exposes per-stage observability. For <code>--mode tiered</code> the <code>step_timings</code> block contains <code>l1_survey</code>, <code>l1_pick_llm</code>, <code>descend</code>, <code>key_pick_llm</code>, <code>memory_retrieval</code>, <code>total_search</code> (plus <code>l2_pick_llm</code> when an L1 exceeded the 40-key escalation threshold). Every result carries <code>metadata.mode</code> so a consumer never has to guess which pipeline produced it:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>memoir<span class="w"> </span>--json<span class="w"> </span>recall<span class="w"> </span><span class="s2">"testing setup"</span><span class="w"> </span>--mode<span class="w"> </span>tiered<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">'.memories[0].metadata | {mode, step_timings}'</span>
+</span></code></pre></div>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="p">{</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span><span class="nt">"mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tiered"</span><span class="p">,</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">  </span><span class="nt">"step_timings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">    </span><span class="nt">"step1_path_discovery"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.012</span><span class="p">,</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">    </span><span class="nt">"l1_survey"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.001</span><span class="p">,</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">    </span><span class="nt">"l1_pick_llm"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.412</span><span class="p">,</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">    </span><span class="nt">"descend"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.001</span><span class="p">,</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">    </span><span class="nt">"key_pick_llm"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.587</span><span class="p">,</span>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="w">    </span><span class="nt">"memory_retrieval"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.008</span><span class="p">,</span>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="w">    </span><span class="nt">"total_search"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.021</span>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>A/B the two modes on the same store:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>memoir<span class="w"> </span>--json<span class="w"> </span>recall<span class="w"> </span><span class="s2">"testing setup"</span><span class="w"> </span>--mode<span class="w"> </span>single<span class="w">  </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">'.timing_ms'</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>memoir<span class="w"> </span>--json<span class="w"> </span>recall<span class="w"> </span><span class="s2">"testing setup"</span><span class="w"> </span>--mode<span class="w"> </span>tiered<span class="w">  </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">'.timing_ms'</span>
+</span></code></pre></div>
+<h4 id="picking-the-llm">Picking the LLM<a class="headerlink" href="#picking-the-llm" title="Permanent link">&para;</a></h4>
+<p>Both <code>recall</code> and <code>remember</code> accept a <code>--model</code> flag. Resolution order:</p>
+<ol>
+<li><code>--model &lt;name&gt;</code> flag (highest priority)</li>
+<li><code>MEMOIR_LLM_MODEL</code> env var</li>
+<li><code>claude-haiku-4-5</code> default</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Default — Anthropic Haiku, requires ANTHROPIC_API_KEY</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>memoir<span class="w"> </span>recall<span class="w"> </span><span class="s2">"what's my testing setup?"</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1"># Per-call override</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>memoir<span class="w"> </span>recall<span class="w"> </span><span class="s2">"..."</span><span class="w">   </span>--model<span class="w"> </span>gpt-4o-mini<span class="w">      </span><span class="c1"># needs OPENAI_API_KEY</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>memoir<span class="w"> </span>remember<span class="w"> </span><span class="s2">"..."</span><span class="w"> </span>--model<span class="w"> </span>claude-sonnet-4-5
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="c1"># Shell-wide override</span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="nb">export</span><span class="w"> </span><span class="nv">MEMOIR_LLM_MODEL</span><span class="o">=</span>gpt-4o-mini
+</span></code></pre></div>
+<p>As of v0.1.7, <code>litellm</code> is a default dependency, so <code>pip install
+memoir-ai</code> enables both LLM-backed and direct-path commands. (Prior
+to v0.1.7 you had to add the <code>[litellm]</code> extra explicitly.)</p>
+<h3 id="memoir-remember-conflict-resolution"><code>memoir remember</code> — conflict resolution<a class="headerlink" href="#memoir-remember-conflict-resolution" title="Permanent link">&para;</a></h3>
+<p>When a write lands on a key that already exists, <code>remember</code> resolves the conflict with a <strong>merge policy</strong>. By default the policy is derived from the key's memory type; <code>--merge-policy</code> overrides it per call. See <a href="../theory/conflict-merge/">Conflict &amp; Merge theory</a> for the full model.</p>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--merge-policy &lt;strategy&gt;</code></td>
+<td>Force a strategy for this write: <code>append</code>, <code>replace</code>, <code>confidence_gated</code>, <code>llm_merge</code>, <code>merge_on_read</code>, or <code>reject</code>.</td>
+</tr>
+<tr>
+<td><code>-i, --interactive</code></td>
+<td>On a conflict, show existing vs. incoming and prompt (<code>replace</code> / <code>append</code> / <code>merge</code> / <code>skip</code>) per key. Not valid with <code>--json</code>.</td>
+</tr>
+<tr>
+<td><code>--replace</code></td>
+<td>Back-compat alias for <code>--merge-policy replace</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>Resolution order (first one set wins): <code>--merge-policy</code> flag → <code>MEMOIR_MERGE_POLICY</code> env → <strong>per-type default</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Memory type</th>
+<th>Example keys</th>
+<th>Default strategy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Episodic</td>
+<td><code>experience.*</code>, <code>metrics.code.*</code></td>
+<td><code>append</code></td>
+</tr>
+<tr>
+<td>Semantic</td>
+<td><code>knowledge.*</code>, <code>preferences.*</code>, <code>profile.*</code>, <code>context.project.*</code></td>
+<td><code>confidence_gated</code></td>
+</tr>
+<tr>
+<td>Procedural</td>
+<td><code>workflow.*</code>, <code>behavior.*</code></td>
+<td><code>llm_merge</code></td>
+</tr>
+<tr>
+<td>Working</td>
+<td><code>context.current.*</code>, <code>metrics.turn.*</code></td>
+<td><code>replace</code></td>
+</tr>
+</tbody>
+</table>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># No flag → the key's memory type decides.</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>memoir<span class="w"> </span>remember<span class="w"> </span><span class="s2">"use spaces"</span><span class="w"> </span>-p<span class="w"> </span>knowledge.coding.style<span class="w">     </span><span class="c1"># semantic → confidence_gated</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>memoir<span class="w"> </span>remember<span class="w"> </span><span class="s2">"deployed v2 at 14:00"</span><span class="w"> </span>-p<span class="w"> </span>experience.releases.log<span class="w">  </span><span class="c1"># episodic → append</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="c1"># Override the type default for this call only.</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>memoir<span class="w"> </span>remember<span class="w"> </span><span class="s2">"use spaces"</span><span class="w"> </span>-p<span class="w"> </span>knowledge.coding.style<span class="w"> </span>--merge-policy<span class="w"> </span>append
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>memoir<span class="w"> </span>remember<span class="w"> </span><span class="s2">"draft note"</span><span class="w">  </span>-p<span class="w"> </span>experience.releases.log<span class="w"> </span>--merge-policy<span class="w"> </span>replace
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="c1"># Resolve interactively, or refuse to clobber and inspect the conflict (JSON).</span>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>memoir<span class="w"> </span>remember<span class="w"> </span><span class="s2">"new value"</span><span class="w"> </span>-p<span class="w"> </span>knowledge.coding.style<span class="w"> </span>--interactive
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>memoir<span class="w"> </span>--json<span class="w"> </span>remember<span class="w"> </span><span class="s2">"new value"</span><span class="w"> </span>-p<span class="w"> </span>knowledge.coding.style<span class="w"> </span>--merge-policy<span class="w"> </span>reject
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>confidence_gated</code> only changes behaviour for sub-1.0 confidence (LLM classifications). Caller-supplied <code>-p</code> writes are confidence <code>1.0</code>, so on a semantic key they pass the gate and effectively replace — pass <code>--merge-policy append</code>/<code>llm_merge</code> to accumulate or consolidate instead.</p>
+</div>
+<h3 id="memoir-get-direct-lookup-by-taxonomy-path"><code>memoir get</code> — direct lookup by taxonomy path<a class="headerlink" href="#memoir-get-direct-lookup-by-taxonomy-path" title="Permanent link">&para;</a></h3>
+<p>No LLM, no search. Pass one or more exact keys; missing keys come back as <code>found: false</code> so you can batch speculative candidates without branching. Latency is typically &lt;10ms.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># Single lookup</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>memoir<span class="w"> </span>get<span class="w"> </span>preferences.coding.style
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="c1"># Batched lookup in one call</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>memoir<span class="w"> </span>get<span class="w"> </span>preferences.coding.style<span class="w"> </span>profile.professional.skills
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="c1"># Scope to a namespace, JSON output</span>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>memoir<span class="w"> </span>--json<span class="w"> </span>get<span class="w"> </span>preferences.coding.style<span class="w"> </span>-n<span class="w"> </span>default
+</span></code></pre></div>
+<p>This is the primitive an outer-LLM caller-driven flow uses once it has narrowed to exact keys. From the CLI it's also the fastest way to read a known memory.</p>
+<h3 id="memoir-summarize-taxonomy-surveys"><code>memoir summarize</code> — taxonomy surveys<a class="headerlink" href="#memoir-summarize-taxonomy-surveys" title="Permanent link">&para;</a></h3>
+<p>Pure-compute taxonomy inspection. The building blocks behind the caller-driven <code>[mode=drill]</code> / <code>[mode=flat]</code> / <code>[mode=get]</code> patterns are directly usable from the shell when you want to understand the layout of a store without invoking any LLM.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># Full store breakdown</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>memoir<span class="w"> </span>summarize
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="c1"># Taxonomy-only view, scoped to one namespace</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>memoir<span class="w"> </span>summarize<span class="w"> </span>taxonomy<span class="w"> </span>-n<span class="w"> </span>default
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="c1"># Keys matching a glob</span>
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>memoir<span class="w"> </span>summarize<span class="w"> </span>--keys<span class="w"> </span><span class="s2">"preferences.*"</span>
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="c1"># Top-level prefix histogram (L1 survey)</span>
+</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>memoir<span class="w"> </span>summarize<span class="w"> </span>--depth<span class="w"> </span><span class="m">1</span>
+</span><span id="__span-13-12"><a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>
+</span><span id="__span-13-13"><a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a><span class="c1"># Glob + depth: L2 breakdown under preferences.*</span>
+</span><span id="__span-13-14"><a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a>memoir<span class="w"> </span>summarize<span class="w"> </span>--keys<span class="w"> </span><span class="s2">"preferences.*"</span><span class="w"> </span>--depth<span class="w"> </span><span class="m">2</span>
+</span><span id="__span-13-15"><a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a>
+</span><span id="__span-13-16"><a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a><span class="c1"># JSON for scripting</span>
+</span><span id="__span-13-17"><a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a>memoir<span class="w"> </span>--json<span class="w"> </span>summarize<span class="w"> </span>--depth<span class="w"> </span><span class="m">1</span><span class="w"> </span>-n<span class="w"> </span>default
+</span></code></pre></div>
+<p>A shell-only drill-down — mirror of the skill's <code>[mode=drill]</code> — is just three calls:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>memoir<span class="w"> </span>--json<span class="w"> </span>summarize<span class="w"> </span>--depth<span class="w"> </span><span class="m">1</span><span class="w"> </span>-n<span class="w"> </span>default
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="c1"># → pick L1 prefixes from prefix_counts</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>memoir<span class="w"> </span>--json<span class="w"> </span>summarize<span class="w"> </span>--keys<span class="w"> </span><span class="s2">"preferences.*"</span><span class="w"> </span>-n<span class="w"> </span>default
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="c1"># → pick 3-7 exact keys from matching_keys</span>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>memoir<span class="w"> </span>--json<span class="w"> </span>get<span class="w"> </span>preferences.coding.style<span class="w"> </span>preferences.tools.editor
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="c1"># → stored values, &lt;10ms</span>
+</span></code></pre></div>
+<h3 id="when-to-reach-for-which-cli-command">When to reach for which CLI command<a class="headerlink" href="#when-to-reach-for-which-cli-command" title="Permanent link">&para;</a></h3>
+<ul>
+<li>You want <strong>semantic search</strong> over a natural-language query → <code>memoir recall</code> (add <code>--mode tiered</code> if the single-stage picker is dropping signal on your store size).</li>
+<li>You already know the exact <strong>taxonomy path</strong> → <code>memoir get</code> — skip the classifier entirely.</li>
+<li>You want to <strong>inspect the taxonomy layout</strong> (what prefixes exist, how dense each branch is) → <code>memoir summarize --depth N</code> with or without <code>--keys &lt;glob&gt;</code>.</li>
+<li>You're scripting an <strong>agent / LLM caller</strong> and want to avoid a nested LLM call on memoir's side → compose <code>summarize</code> + <code>get</code> yourself; this is exactly what the <code>memory-recall</code> skill does.</li>
+</ul>
+<h2 id="cloud-sync-commands">Cloud sync commands<a class="headerlink" href="#cloud-sync-commands" title="Permanent link">&para;</a></h2>
+<p><code>memoir remote</code>, <code>push</code>, <code>pull</code>, and <code>fetch</code> round-trip a local store with <a href="https://github.com/zhangfengcdt/memoir-cloud">memoir-cloud</a>, so the same memories follow your agent across machines. They need a login: without one every cloud command exits 1 asking you to run <code>memoir login</code>, and nothing else in memoir changes. The rules behind the commands (addresses, what syncs, fast-forward only, key handling) are in the <a href="../cloud/">Cloud Sync</a> reference; this section is a hands-on guide.</p>
+<p>From the root of a clone of your code repo, the whole setup is:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>memoir<span class="w"> </span>login<span class="w">                 </span><span class="c1"># once per machine: approve in the browser</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>memoir<span class="w"> </span>push<span class="w"> </span>--create<span class="w">         </span><span class="c1"># New: create &lt;handle&gt;/&lt;repo name&gt; from this repo's memories</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="c1"># or</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>memoir<span class="w"> </span>pull<span class="w"> </span>&lt;owner&gt;/&lt;store&gt;<span class="w">  </span><span class="c1"># Open: link an existing cloud store and pull it</span>
+</span></code></pre></div>
+<p>Inside a code repo memoir uses that repo's store, the one Claude Code uses (<code>~/.memoir/&lt;slug&gt;</code>), so neither <code>MEMOIR_STORE</code> nor <code>-s</code> is needed; <code>memoir login</code> remembers the gateway, so <code>--url</code> isn't either. On a headless machine use <code>echo "$KEY" | memoir login --with-key</code>; <code>MEMOIR_API_KEY</code> still works and overrides the saved login. The walkthrough below uses explicit names and addresses so each step is visible.</p>
+<p>Cloud stores are addressed GitHub-style as <code>&lt;owner&gt;/&lt;store&gt;</code>, where <code>owner</code> is your handle and <code>store</code> is the store name, for example <code>feng-zhang/demo</code>. That address is what you type, what memoir prints, and (prefixed with the gateway) the git remote <code>origin</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>memoir login [--url &lt;gateway&gt;] [--with-key] [--default] [--status]</code> / <code>memoir logout [--url &lt;gateway&gt;] [--all]</code></td>
+<td>Save a key per gateway after approving in the browser (or from stdin); list them; remove one (or all) and revoke it on the cloud.</td>
+</tr>
+<tr>
+<td><code>memoir push --create [&lt;store&gt;]</code></td>
+<td>Create <code>&lt;your handle&gt;/&lt;store&gt;</code> in the cloud (default name: the code repo's), link it as <code>origin</code>, and push. The usual first step.</td>
+</tr>
+<tr>
+<td><code>memoir remote add [&lt;owner&gt;/&lt;store&gt;] [--url &lt;gateway&gt;] [--force]</code></td>
+<td>Link an existing cloud store. With no argument, proposes <code>&lt;your handle&gt;/&lt;directory name&gt;</code> and asks first.</td>
+</tr>
+<tr>
+<td><code>memoir remote add … --name &lt;remote&gt;</code> / <code>memoir remote list</code></td>
+<td>Link another cloud store under its own name (e.g. <code>staging</code>); list every remote with its gateway and login state.</td>
+</tr>
+<tr>
+<td><code>memoir remote show [&lt;remote&gt;]</code> / <code>memoir remote remove [&lt;remote&gt;]</code></td>
+<td>Show the address, gateway, branch and cloud summary; or unlink. Default remote: <code>origin</code>.</td>
+</tr>
+<tr>
+<td><code>memoir push [--branch &lt;b&gt;] [--remote &lt;name&gt;]</code></td>
+<td>Upload the chunks the cloud is missing, <strong>then</strong> <code>git push</code>. Default: current branch.</td>
+</tr>
+<tr>
+<td><code>memoir fetch [--remote &lt;name&gt;]</code></td>
+<td>Download new refs and chunks. Moves no local branch.</td>
+</tr>
+<tr>
+<td><code>memoir pull [&lt;owner&gt;/&lt;store&gt;] [--remote &lt;name&gt;] [--url &lt;gateway&gt;] [--branch &lt;b&gt;] [--force]</code></td>
+<td>With an address, links the remote first when it's missing (never relinks one that points elsewhere). Then <code>fetch</code>, then fast-forward the branch. Creates it from the cloud if missing locally; a never-used local store adopts the cloud history. <code>--force</code> replaces the local branch with the cloud copy.</td>
+</tr>
+<tr>
+<td><code>memoir status</code></td>
+<td>Adds <code>origin: &lt;owner&gt;/&lt;store&gt;</code> when a cloud remote is configured.</td>
+</tr>
+</tbody>
+</table>
+<p>All of them accept <code>--json</code>.</p>
+<h3 id="first-push-from-your-laptop">First push from your laptop<a class="headerlink" href="#first-push-from-your-laptop" title="Permanent link">&para;</a></h3>
+<p>Start from an existing store, or create one:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>memoir<span class="w"> </span>new<span class="w"> </span>~/memories
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">MEMOIR_STORE</span><span class="o">=</span>~/memories
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>memoir<span class="w"> </span>remember<span class="w"> </span><span class="s2">"Always run make lint before opening a PR"</span>
+</span></code></pre></div>
+<p>Create the cloud store, link it, and push in one step. The name is yours to pick; the owner is your handle:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>memoir<span class="w"> </span>push<span class="w"> </span>--create<span class="w"> </span>memories
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>✓ pushed main to feng-zhang/memories: 3 chunks (3 new) in 1.4 s, git in 2.6 s
+</span></code></pre></div>
+<p>Behind the scenes this validated the name locally, created the cloud store, set the git remote <code>origin</code> to <code>https://&lt;gateway&gt;/feng-zhang/memories</code>, uploaded the chunks the cloud lacked in multipart batches, and only then pushed the git history. The chunks are the ProllyTree node files that hold the actual memories. If a chunk upload fails, the git push is never attempted, so the cloud never points at data it does not have. Memoir also records which hashes the server confirmed under <code>.git/memoir-cloud/pushed-origin</code>, so a second push right away needs no round trip to find out that nothing is new:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>✓ pushed main to feng-zhang/memories: 3 chunks (0 new) in 0.0 s, git in 0.9 s
+</span></code></pre></div>
+<p><code>memoir status</code> and <code>memoir remote show</code> both tell you the address:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>origin:   feng-zhang/memories
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>Gateway:  https://api-gateway-production-ab56.up.railway.app
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>Branch:   main
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>Created:  2026-10-03T14:02:11Z
+</span></code></pre></div>
+<p>If the name is taken you get <code>store name already exists; pick another or run memoir remote add feng-zhang/memories</code>. If the name is invalid (spaces, a leading dot, a <code>.git</code> suffix) memoir says so before contacting the server.</p>
+<h3 id="pick-it-up-on-your-desktop">Pick it up on your desktop<a class="headerlink" href="#pick-it-up-on-your-desktop" title="Permanent link">&para;</a></h3>
+<p>You never create the local store by hand. The Claude Code plugin creates one per project on session start, and memoir creates one on first use. So on the second machine, open the same project, log in, and pull the cloud store by its address. With an address, <code>pull</code> links the remote first when it doesn't exist yet:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>memoir<span class="w"> </span>login
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>memoir<span class="w"> </span>pull<span class="w"> </span>feng-zhang/memories
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>→ linked origin to feng-zhang/memories
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>✓ created main to 7d3f1a9 (3 new chunks)
+</span></code></pre></div>
+<p>Running the same command again just pulls what's new. If <code>origin</code> already points at a <em>different</em> cloud store, <code>pull</code> changes nothing and exits 1 with a hint: use <code>--remote &lt;other name&gt;</code> to add a second store, or <code>memoir remote add &lt;address&gt; --force</code> to switch. <code>memoir remote add &lt;address&gt;</code> followed by <code>memoir pull</code> still works if you prefer two steps.</p>
+<p>Because the local store had never been used, <code>pull</code> adopted the cloud history outright. From here <code>status</code>, <code>recall</code>, and <code>get</code> see the laptop's memories:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>memoir<span class="w"> </span>status
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>memoir<span class="w"> </span>recall<span class="w"> </span><span class="s2">"lint"</span>
+</span></code></pre></div>
+<p>Linking resolves the address first. An unknown store, or one you do not own, fails with <code>store feng-zhang/typo not found (or you don't own it)</code> and nothing is written. After <code>pull</code>, memoir also checks that the chunk named by the store's root hash was downloaded.</p>
+<p>If the local store already holds memories of its own, <code>pull</code> refuses rather than guess:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>✗ local and cloud histories have diverged; cloud merge is not available yet. To discard the local memories on this branch and adopt the cloud copy: memoir pull --force --branch main
+</span></code></pre></div>
+<p>Either push those memories to their own cloud store (<code>memoir remote remove</code>, then <code>memoir push --create &lt;other-name&gt;</code>), or adopt the cloud copy with <code>memoir pull --force</code>, which replaces the local branch and keeps the tip it had before under <code>refs/memoir/backup/&lt;branch&gt;</code> (recover with <code>git branch &lt;name&gt; refs/memoir/backup/&lt;branch&gt;</code>).</p>
+<h3 id="linking-without-typing-the-address">Linking without typing the address<a class="headerlink" href="#linking-without-typing-the-address" title="Permanent link">&para;</a></h3>
+<p>Run <code>memoir remote add</code> with no argument and it proposes <code>&lt;your handle&gt;/&lt;current directory name&gt;</code> and asks before resolving. In a project folder called <code>memories</code> that is <code>feng-zhang/memories</code>. A full <code>https://&lt;gateway&gt;/&lt;owner&gt;/&lt;store&gt;</code> URL is accepted in place of the address.</p>
+<h3 id="the-daily-loop">The daily loop<a class="headerlink" href="#the-daily-loop" title="Permanent link">&para;</a></h3>
+<p>Treat it like git. Pull before you start, push when you finish:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>memoir<span class="w"> </span>pull<span class="w">          </span><span class="c1"># bring down anything the other machine pushed</span>
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="c1"># ... work; the agent captures memories ...</span>
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>memoir<span class="w"> </span>push
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>✓ fast-forwarded main to 9c1e2f0 (2 new chunks)
+</span></code></pre></div>
+<p><code>fetch</code> downloads refs and chunks without moving any local branch, for when you want to look before you merge:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>✓ fetched 1 remote refs, 2 new chunks from feng-zhang/memories
+</span></code></pre></div>
+<h3 id="when-the-cloud-is-ahead">When the cloud is ahead<a class="headerlink" href="#when-the-cloud-is-ahead" title="Permanent link">&para;</a></h3>
+<p>You pushed from the desktop, forgot to pull on the laptop, and kept working there. Pushing from the laptop is refused with exit code 6:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>✗ remote has commits you don't have; run `memoir pull` first
+</span></code></pre></div>
+<p>User branches on the cloud are fast-forward only, so one machine can never overwrite another's history. If the laptop has no new commits of its own, <code>memoir pull</code> then <code>memoir push</code> resolves it.</p>
+<p>If both machines committed since the last sync, the histories have diverged and <code>pull</code> is refused too:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>✗ local and cloud histories have diverged; cloud merge is not available yet
+</span></code></pre></div>
+<p>Cloud-side merge is planned but not available yet. Until then, pick a side. To keep the cloud version, force-pull. Look at what you are giving up first; afterwards the old tip is kept under <code>refs/memoir/backup/main</code> in case you need it:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>memoir<span class="w"> </span>fetch<span class="w">                                  </span><span class="c1"># cloud refs + chunks are now local</span>
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>memoir<span class="w"> </span>diff<span class="w"> </span>main<span class="w"> </span>origin/main<span class="w">                  </span><span class="c1"># see what differs before deciding</span>
+</span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>memoir<span class="w"> </span>pull<span class="w"> </span>--force<span class="w">                           </span><span class="c1"># main := origin/main</span>
+</span><span id="__span-30-4"><a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a>memoir<span class="w"> </span>remember<span class="w"> </span><span class="s2">"..."</span><span class="w">                         </span><span class="c1"># re-add anything that mattered</span>
+</span><span id="__span-30-5"><a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a>memoir<span class="w"> </span>push
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>✓ replaced main (was 3f9c2b1, kept at refs/memoir/backup/main) with origin/main at 9c1e2f0 (2 new chunks)
+</span></code></pre></div>
+<p>To keep the local version instead, unlink with <code>memoir remote remove</code> and start a new cloud store with <code>memoir push --create &lt;new-name&gt;</code>.</p>
+<h3 id="more-than-one-branch">More than one branch<a class="headerlink" href="#more-than-one-branch" title="Permanent link">&para;</a></h3>
+<p>Every verb takes <code>--branch</code>. Push an experiment branch without touching <code>main</code>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>memoir<span class="w"> </span>branch<span class="w"> </span>experiments
+</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>memoir<span class="w"> </span>checkout<span class="w"> </span>experiments
+</span><span id="__span-32-3"><a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>memoir<span class="w"> </span>remember<span class="w"> </span><span class="s2">"Trying Ruff instead of flake8 on the side project"</span>
+</span><span id="__span-32-4"><a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>memoir<span class="w"> </span>push<span class="w"> </span>--branch<span class="w"> </span>experiments
+</span></code></pre></div>
+<p>On the other machine, <code>pull --branch</code> creates the branch if it does not exist locally yet:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>memoir<span class="w"> </span>pull<span class="w"> </span>--branch<span class="w"> </span>experiments
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>✓ created experiments to 4b7d0a1 (1 new chunks)
+</span></code></pre></div>
+<p>Branches named <code>cloud/...</code> belong to the cloud. They carry proposals the cloud generates for you, appear after <code>fetch</code> as <code>origin/cloud/...</code>, and cannot be pushed:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>✗ 'cloud/dedupe/42' is a cloud-owned proposal branch and cannot be pushed
+</span></code></pre></div>
+<h3 id="scripting-and-agents">Scripting and agents<a class="headerlink" href="#scripting-and-agents" title="Permanent link">&para;</a></h3>
+<p>Every command honours <code>--json</code> (or <code>MEMOIR_JSON=1</code>). A sync step in a hook or CI job can branch on the exit code and read the counts:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="k">if</span><span class="w"> </span><span class="nv">out</span><span class="o">=</span><span class="k">$(</span>memoir<span class="w"> </span>--json<span class="w"> </span>push<span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-36-2"><a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$out</span><span class="s2">"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">'{origin, branch, chunks_uploaded, chunks_present}'</span>
+</span><span id="__span-36-3"><a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a><span class="k">else</span>
+</span><span id="__span-36-4"><a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a><span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="nv">$?</span><span class="w"> </span><span class="k">in</span>
+</span><span id="__span-36-5"><a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a><span class="w">    </span><span class="m">6</span><span class="o">)</span><span class="w"> </span>memoir<span class="w"> </span>pull<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>memoir<span class="w"> </span>push<span class="w"> </span><span class="p">;;</span><span class="w">   </span><span class="c1"># cloud was ahead, retry once</span>
+</span><span id="__span-36-6"><a id="__codelineno-36-6" name="__codelineno-36-6" href="#__codelineno-36-6"></a><span class="w">    </span><span class="m">1</span><span class="o">)</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"auth or network problem: </span><span class="nv">$out</span><span class="s2">"</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span><span class="w"> </span><span class="p">;;</span>
+</span><span id="__span-36-7"><a id="__codelineno-36-7" name="__codelineno-36-7" href="#__codelineno-36-7"></a><span class="w">  </span><span class="k">esac</span>
+</span><span id="__span-36-8"><a id="__codelineno-36-8" name="__codelineno-36-8" href="#__codelineno-36-8"></a><span class="k">fi</span>
+</span></code></pre></div>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="p">{</span>
+</span><span id="__span-37-2"><a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a><span class="w">  </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+</span><span id="__span-37-3"><a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a><span class="w">  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pushed main to feng-zhang/memories: 4 chunks (1 new) in 1.1 s, git in 2.4 s"</span><span class="p">,</span>
+</span><span id="__span-37-4"><a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a><span class="w">  </span><span class="nt">"branch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"main"</span><span class="p">,</span>
+</span><span id="__span-37-5"><a id="__codelineno-37-5" name="__codelineno-37-5" href="#__codelineno-37-5"></a><span class="w">  </span><span class="nt">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"feng-zhang/memories"</span><span class="p">,</span>
+</span><span id="__span-37-6"><a id="__codelineno-37-6" name="__codelineno-37-6" href="#__codelineno-37-6"></a><span class="w">  </span><span class="nt">"chunks_uploaded"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+</span><span id="__span-37-7"><a id="__codelineno-37-7" name="__codelineno-37-7" href="#__codelineno-37-7"></a><span class="w">  </span><span class="nt">"chunks_present"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+</span><span id="__span-37-8"><a id="__codelineno-37-8" name="__codelineno-37-8" href="#__codelineno-37-8"></a><span class="w">  </span><span class="nt">"pushed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+</span><span id="__span-37-9"><a id="__codelineno-37-9" name="__codelineno-37-9" href="#__codelineno-37-9"></a><span class="w">  </span><span class="nt">"seconds"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.6</span><span class="p">,</span>
+</span><span id="__span-37-10"><a id="__codelineno-37-10" name="__codelineno-37-10" href="#__codelineno-37-10"></a><span class="w">  </span><span class="nt">"chunk_seconds"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.1</span><span class="p">,</span>
+</span><span id="__span-37-11"><a id="__codelineno-37-11" name="__codelineno-37-11" href="#__codelineno-37-11"></a><span class="w">  </span><span class="nt">"git_seconds"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.4</span>
+</span><span id="__span-37-12"><a id="__codelineno-37-12" name="__codelineno-37-12" href="#__codelineno-37-12"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>Every JSON result carries the address as <code>origin</code>. <code>fetch</code> adds <code>chunks_downloaded</code> and <code>remote_refs</code>; <code>pull</code> adds <code>branch</code>, <code>created</code>, <code>tip</code>, <code>chunks_downloaded</code>, <code>forced</code>, <code>previous_tip</code>, and <code>backup_ref</code>.</p>
+<p>To use a different gateway, such as a staging deployment, pass <code>--url</code> to <code>remote add</code> or <code>push --create</code>, or set <code>MEMOIR_CLOUD_URL</code> once. After linking, the gateway lives on the <code>origin</code> URL, so the other verbs need neither.</p>
+<h3 id="unlinking">Unlinking<a class="headerlink" href="#unlinking" title="Permanent link">&para;</a></h3>
+<p><code>memoir remote remove</code> drops the git remote and nothing else. Local memories, history, and the cloud store are untouched.</p>
+<h3 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Message</th>
+<th>Cause</th>
+<th>What to do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Cloud sync requires a login</code></td>
+<td>No saved login and no <code>MEMOIR_API_KEY</code>.</td>
+<td><code>memoir login</code> (or <code>export MEMOIR_API_KEY=...</code>)</td>
+</tr>
+<tr>
+<td><code>not signed in: run memoir login</code></td>
+<td>The gateway returned 401.</td>
+<td>The key is wrong, expired or revoked: <code>memoir login</code> again.</td>
+</tr>
+<tr>
+<td><code>not logged in to &lt;gateway&gt;</code></td>
+<td>No saved login for the gateway this remote (or <code>--url</code>) points at.</td>
+<td><code>memoir login --url &lt;gateway&gt;</code>; <code>memoir login --status</code> shows what's saved.</td>
+</tr>
+<tr>
+<td><code>your account has no handle yet</code></td>
+<td>You have not chosen a handle.</td>
+<td>Open <code>&lt;gateway&gt;/app</code> in a browser and pick one.</td>
+</tr>
+<tr>
+<td><code>store &lt;owner&gt;/&lt;store&gt; not found (or you don't own it)</code></td>
+<td>Unknown address, or a store belonging to someone else.</td>
+<td>Check the address with <code>memoir remote show</code> on the machine that created it.</td>
+</tr>
+<tr>
+<td><code>"str_..." is a store id</code></td>
+<td>You pasted an internal id.</td>
+<td>Use the <code>&lt;owner&gt;/&lt;store&gt;</code> address instead.</td>
+</tr>
+<tr>
+<td><code>store name already exists</code></td>
+<td><code>--create</code> with a name you already use.</td>
+<td>Pick another name, or <code>memoir remote add &lt;handle&gt;/&lt;name&gt;</code>.</td>
+</tr>
+<tr>
+<td><code>remote 'origin' already exists (...); pass --force to replace it</code></td>
+<td>The store is linked already.</td>
+<td>Use <code>remote show</code>, or <code>remote add ... --force</code> to relink.</td>
+</tr>
+<tr>
+<td><code>remote has commits you don't have; run memoir pull first</code> (exit 6)</td>
+<td>The cloud is ahead.</td>
+<td><code>memoir pull</code>, then push again.</td>
+</tr>
+<tr>
+<td><code>local and cloud histories have diverged</code> (exit 6)</td>
+<td>Both sides have commits the other lacks: both machines captured since the last sync, or the local store grew memories before it was linked.</td>
+<td>See "When the cloud is ahead" above, or adopt the cloud copy with <code>memoir pull --force</code>.</td>
+</tr>
+<tr>
+<td><code>root chunk ... is missing locally after sync</code></td>
+<td>A chunk download did not complete.</td>
+<td>Run <code>memoir fetch</code> again.</td>
+</tr>
+<tr>
+<td><code>object store unavailable, retry later</code></td>
+<td>The cloud's object store answered 502 three times in a row.</td>
+<td>Wait a little and run <code>memoir push</code> again; chunks already written are not re-sent.</td>
+</tr>
+<tr>
+<td><code>server rejected N chunk(s)</code></td>
+<td>The server refused some chunk parts (reason listed per chunk).</td>
+<td>Nothing was pushed to git. Fix or report the listed chunks, then push again.</td>
+</tr>
+</tbody>
+</table>
+<p>Memoir never writes the key to disk and never prints the cloud's internal store ids. If either ever appears in output, that is a bug: please report it.</p>
+<h2 id="other-command-groups">Other command groups<a class="headerlink" href="#other-command-groups" title="Permanent link">&para;</a></h2>
+<p>The rest of the CLI surface is documented inline via <code>--help</code>. Command groups at a glance:</p>
+<table>
+<thead>
+<tr>
+<th>Group</th>
+<th>Commands</th>
+<th><code>--help</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Store</td>
+<td><code>new</code>, <code>connect</code>, <code>status</code>, <code>refresh</code></td>
+<td><code>memoir new --help</code></td>
+</tr>
+<tr>
+<td>Memory</td>
+<td><code>remember</code>, <code>recall</code>, <code>get</code>, <code>forget</code></td>
+<td><code>memoir remember --help</code></td>
+</tr>
+<tr>
+<td>Branch</td>
+<td><code>branch</code>, <code>checkout</code>, <code>merge</code>, <code>time-travel</code>, <code>diff</code>, <code>branch-match</code></td>
+<td><code>memoir branch --help</code></td>
+</tr>
+<tr>
+<td>Crypto</td>
+<td><code>proof</code>, <code>verify</code>, <code>blame</code></td>
+<td><code>memoir proof --help</code></td>
+</tr>
+<tr>
+<td>Analysis</td>
+<td><code>summarize</code></td>
+<td><code>memoir summarize --help</code></td>
+</tr>
+<tr>
+<td>Cloud sync</td>
+<td><code>remote</code>, <code>push</code>, <code>pull</code>, <code>fetch</code> — stores addressed as <code>&lt;owner&gt;/&lt;store&gt;</code> (requires <code>MEMOIR_API_KEY</code>; see <a href="../cloud/">Cloud Sync</a>)</td>
+<td><code>memoir push --help</code></td>
+</tr>
+</tbody>
+</table>
+<p>For the underlying Python APIs these commands call into, see the <a href="../api/memoir/">API Reference</a>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/zhangfengcdt/memoir" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.tracking", "navigation.indexes", "toc.follow", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.code.annotate", "content.action.edit"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
